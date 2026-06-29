@@ -4,192 +4,497 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Suyog L - Ethical Hacker, Cybersecurity Engineer, and CEO at Matrica Networks. Building the Psychyverse.">
-    <title>Suyog L | Cybersecurity Engineer & CEO</title>
+    <title>Suyog L | Cybersecurity Engineer &amp; CEO</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div id="canvas-container"></div>
     <div class="overlay-grid"></div>
 
+    <!-- HUD Scanline Overlay -->
+    <div class="scanlines"></div>
+
+    <!-- System status ticker -->
+    <div class="status-ticker">
+        <span class="ticker-text">SYS:ONLINE &nbsp;|&nbsp; THREAT_LEVEL:LOW &nbsp;|&nbsp; AI_CORE:ACTIVE &nbsp;|&nbsp; FIREWALL:ENABLED &nbsp;|&nbsp; VPN:ROUTING &nbsp;|&nbsp; TOR_NETWORK:CONNECTED &nbsp;|&nbsp; PUBLIC_IP:REDACTED &nbsp;|&nbsp; PRIVATE_IP:REDACTED &nbsp;|&nbsp; IDS/IPS:ENABLED &nbsp;|&nbsp; NEURAL_NET:PROCESSING &nbsp;|&nbsp; ENCRYPTION:AES-256 &nbsp;|&nbsp; UPTIME:99.99% &nbsp;|&nbsp; PSYCHYVERSE:BUILDING&nbsp;|&nbsp; BOTS:OFFLINE &nbsp;|&nbsp;</span>
+    </div>
+
     <nav class="navbar">
         <div class="nav-content">
-            <div class="logo">SUYOG<span class="highlight">.L</span></div>
+            <div class="logo">
+                <span class="logo-bracket">[</span>SUYOG<span class="highlight">.L</span><span class="logo-bracket">]</span>
+            </div>
             <ul class="nav-links">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#achievements">Achievements</a></li>
-                <li><a href="#education">Education</a></li>
+                <li><a href="#hero"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#about"><i class="fas fa-robot"></i> About</a></li>
+                <li><a href="#experience"><i class="fas fa-terminal"></i> Experience</a></li>
+                <li><a href="#skills"><i class="fas fa-microchip"></i> Skills</a></li>
+                <li><a href="#achievements"><i class="fas fa-shield-alt"></i> Achievements</a></li>
+                <li><a href="#education"><i class="fas fa-brain"></i> Education</a></li>
             </ul>
+            <div class="nav-status">
+                <span class="status-dot"></span>
+                <span class="status-label">SECURE</span>
+            </div>
         </div>
     </nav>
 
     <main class="main-content">
+
+        <!-- ==================== HERO ==================== -->
         <section id="hero" class="hero-section">
-            <div class="hero-content glass-panel">
-                <h1 class="glitch" data-text="Suyog L">Suyog L</h1>
-                <h2 class="subtitle">Ethical Hacker | Cybersecurity Engineer | Entrepreneur</h2>
-                <p class="bio">
-                    CEO at <a href="https://www.matricanetworks.com" target="_blank" class="highlight">Matrica Networks</a> | Bug Bounty Hunter | Rustacean<br>
-                    Building the <span class="highlight">#Psychyverse</span>
-                </p>
-                <div class="cta-buttons">
-                    <a href="#experience" class="btn primary-btn"><i class="fas fa-terminal"></i> View Experience</a>
-                    <a href="https://www.matricanetworks.com" target="_blank" class="btn secondary-btn"><i class="fas fa-globe"></i> Matrica Networks</a>
-                    <a href="mailto:suyogln26@gmail.com" class="btn secondary-btn"><i class="fas fa-shield-alt"></i> Contact Securely</a>
+            <div class="hero-layout hero-layout-single">
+                <!-- Terminal + CTA -->
+                <div class="hero-terminal terminal-window">
+                    <div class="terminal-header">
+                        <span class="t-btn t-red"></span><span class="t-btn t-yellow"></span><span class="t-btn t-green"></span>
+                        <div class="terminal-title">root@psychyverse:~#&nbsp;<span class="cursor-inline">_</span></div>
+                        <div class="terminal-badges">
+                            <span class="tbadge">HACKER</span>
+                            <span class="tbadge tbadge-ai">AI</span>
+                            <span class="tbadge tbadge-rb">ROBOTICS</span>
+                        </div>
+                    </div>
+                    <div class="terminal-body">
+                        <h1 class="glitch" data-text="Suyog L">Suyog L</h1>
+                        <h2 class="subtitle type-line">
+                            <span class="prompt">&gt;</span> Ethical Hacker <span class="sep">|</span> Cybersecurity Engineer <span class="sep">|</span> Entrepreneur
+                        </h2>
+                        <p class="bio console-text">
+                            <span class="prompt">&gt;</span> CEO @ <a href="https://www.matricanetworks.com" target="_blank" class="link-cyan">Matrica Networks</a><br>
+                            <span class="prompt">&gt;</span> Bug Bounty Hunter <span class="dim">|</span> Rustacean<br>
+                            <span class="prompt">&gt;</span> Building the <span class="link-purple">#Psychyverse</span><span class="cursor"></span>
+                        </p>
+                        <div class="hacker-actions">
+                            <a href="#experience" class="hacker-btn"><span class="prompt">$</span> ./view_experience.sh</a>
+                            <a href="https://www.matricanetworks.com" target="_blank" class="hacker-btn"><span class="prompt">$</span> ping matricanetworks.com</a>
+                            <a href="mailto:suyogln26@gmail.com" class="hacker-btn"><span class="prompt">$</span> ssh secure_contact@suyog.dev</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
+        <!-- ==================== ABOUT ==================== -->
         <section id="about" class="about-section">
-            <h2 class="section-title">Root Access: About Me</h2>
+            <div class="section-header">
+                <div class="section-badge badge-ai"><i class="fas fa-brain"></i> AI_MODULE</div>
+                <h2 class="section-title">Root Access: About Me</h2>
+            </div>
             <div class="glass-panel about-content">
-                <p>
-                    I am driven by a vision to create a world where users don’t need to understand security to be secure and don’t need to code to create. As the Director & CEO of Matrica Networks, I lead the vision, architecture, and execution of a next-generation cybersecurity and AI ecosystem focused on privacy, autonomy, and intelligent systems.
-                </p>
-                <p>
-                    My work sits at the intersection of cybersecurity, artificial intelligence, and system-level engineering, where the goal is simple: eliminate complexity while maximizing security and control.
-                </p>
+                <div class="about-glyph"><i class="fas fa-robot"></i></div>
+                <div class="about-text">
+                    <p>
+                        I am driven by a vision to create a world where users don't need to understand security to be secure — and don't need to code to create. As the Director &amp; CEO of Matrica Networks, I lead the vision, architecture, and execution of a next-generation cybersecurity and AI ecosystem focused on privacy, autonomy, and intelligent systems.
+                    </p>
+                    <p>
+                        My work sits at the intersection of <span class="highlight-inline cyan">cybersecurity</span>, <span class="highlight-inline purple">artificial intelligence</span>, and <span class="highlight-inline green">system-level engineering</span> — where the goal is simple: eliminate complexity while maximizing security and control.
+                    </p>
+                </div>
             </div>
         </section>
 
+        <!-- ==================== EXPERIENCE ==================== -->
         <section id="experience" class="experience-section">
-            <h2 class="section-title">Execution Logs: Experience</h2>
+            <div class="section-header">
+                <div class="section-badge badge-cyber"><i class="fas fa-terminal"></i> EXEC_LOG</div>
+                <h2 class="section-title">Execution Logs: Experience</h2>
+            </div>
             <div class="timeline">
-                
+
                 <div class="timeline-item">
-                    <div class="timeline-dot"></div>
+                    <div class="timeline-dot"><i class="fas fa-crown"></i></div>
                     <div class="glass-panel timeline-content">
+                        <div class="tl-tag tag-ai">AI + CYBERSECURITY</div>
                         <h3>Chief Executive Officer</h3>
-                        <h4>Matrica Networks Pvt Ltd</h4>
-                        <span class="date"><i class="far fa-calendar-alt"></i> Mar 2025 - Present &bull; Bengaluru, India</span>
-                        <p>Leading the vision, architecture, and execution of a next-generation cybersecurity and AI ecosystem focused on privacy, autonomy, and intelligent systems. We are not just building products; we are architecting an interconnected <strong>EcoHub and Platform</strong>. Scaling the core ecosystem:</p>
+                        <h4>Matrica Networks Pvt Ltd &bull; Full-time</h4>
+                        <span class="date"><i class="far fa-calendar-alt"></i> Mar 2025 - Present &bull; 1 yr 4 mos &bull; Bengaluru, Karnataka, India &bull; On-site</span>
+                        <p>As the Director &amp; CEO, I lead the vision, architecture, and execution of a next-generation cybersecurity and AI ecosystem focused on privacy, autonomy, and intelligent systems. My work sits at the intersection of cybersecurity, artificial intelligence, and system-level engineering — where the goal is simple: eliminate complexity while maximizing security and control.</p>
+                        <p>We are currently building and scaling multiple core products:</p>
                         <ul class="product-list">
-                            <li><strong>Psychy OS</strong> – A unified, privacy-first operating system with zero telemetry, offline AI integration, and instant environment switching across offensive, defensive, and private modes.</li>
-                            <li><strong>ScamBane</strong> – A real-time cybersecurity shield that detects and blocks phishing, malware, and scam content across devices before user interaction.</li>
-                            <li><strong>Psychy IDE</strong> – An AI-powered development environment that transforms ideas into production-ready applications using multi-agent systems and automation.</li>
-                            <li><strong>Psychy Browser</strong> – A privacy-first browser integrating Tor and VPN with zero-leak architecture and ephemeral sessions for anonymous browsing.</li>
-                            <li><strong>Psychy AI</strong> – A multi-capable intelligent assistant supporting development, analysis, automation, and multilingual interaction across industries.</li>
+                            <li><strong>🔹 Psychy OS</strong> – A unified, privacy-first operating system with zero telemetry, offline AI integration, and instant environment switching across offensive, defensive, and private modes.</li>
+                            <li><strong>🔹 ScamBane</strong> – A real-time cybersecurity shield that detects and blocks phishing, malware, and scam content across devices before user interaction.</li>
+                            <li><strong>🔹 Psychy IDE</strong> – An AI-powered development environment that transforms ideas into production-ready applications using multi-agent systems and automation.</li>
+                            <li><strong>🔹 Psychy Browser</strong> – A privacy-first browser integrating Tor and VPN with zero-leak architecture and ephemeral sessions for anonymous browsing.</li>
+                            <li><strong>🔹 Psychy AI</strong> – A multi-capable intelligent assistant supporting development, analysis, automation, and multilingual interaction across industries.</li>
+                        </ul>
+                        <p class="tl-subhead">Responsibilities:</p>
+                        <ul class="product-list">
+                            <li>Designing secure system architectures across OS, AI, and cross-platform applications</li>
+                            <li>Leading product strategy, R&amp;D, and innovation pipelines</li>
+                            <li>Building privacy-first, zero-telemetry infrastructures</li>
+                            <li>Developing AI-integrated automation systems (offline-first models)</li>
+                            <li>Overseeing DevSecOps, threat detection systems, and secure deployments</li>
+                        </ul>
+                        <p class="tl-subhead">Focus Areas:</p>
+                        <p class="tl-focus">Cybersecurity &nbsp;|&nbsp; AI Systems &nbsp;|&nbsp; Privacy Engineering &nbsp;|&nbsp; Offensive Security &nbsp;|&nbsp; DevSecOps &nbsp;|&nbsp; System Design &nbsp;|&nbsp; Automation</p>
+                        <p class="tl-quote">Driven by a vision to create a world where users don't need to understand security to be secure — and don't need to code to create.</p>
+                        <div class="tl-skills"><span>Redis</span><span>Secure SDLC</span><span>+7 skills</span></div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"><i class="fas fa-microchip"></i></div>
+                    <div class="glass-panel timeline-content">
+                        <div class="tl-tag tag-cyber">CYBERSECURITY / FINTECH</div>
+                        <h3>Chief Technology Officer</h3>
+                        <h4>Fincelerate &bull; Full-time</h4>
+                        <span class="date"><i class="far fa-calendar-alt"></i> Apr 2025 - Feb 2026 &bull; 11 mos &bull; India &bull; Remote</span>
+                        <p>As CTO at a fintech company specialising in investment platforms, I led the strategic vision and execution of cybersecurity architecture to ensure the integrity, confidentiality, and availability of systems. I directed implementation of enterprise-grade security protocols, established a culture of proactive risk management, and championed adoption of advanced threat detection and mitigation technologies.</p>
+                        <p>I collaborated closely with engineering teams to harden backend systems, enforce regulatory compliance, and drive continuous security improvements through regular audits and penetration testing. My leadership played a key role in fostering user trust and safeguarding high-value financial transactions, enabling the platform to scale securely while maintaining resilience against evolving cyber threats.</p>
+                        <div class="tl-skills"><span>ISO 27001</span><span>ISO 27002</span></div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"><i class="fas fa-bug"></i></div>
+                    <div class="glass-panel timeline-content">
+                        <div class="tl-tag tag-hack">ETHICAL HACKING / VAPT</div>
+                        <h3>VAPT &amp; Ethical Hacking Services</h3>
+                        <h4>Mindorigin Technologies Pvt Ltd &bull; Freelance</h4>
+                        <span class="date"><i class="far fa-calendar-alt"></i> Jun 2024 - Mar 2025 &bull; 10 mos &bull; Bengaluru, Karnataka, India &bull; Hybrid</span>
+                        <p>Provided comprehensive Vulnerability Assessment &amp; Penetration Testing (VAPT) services to identify, analyze, and eliminate security risks across web applications, APIs, networks, and systems.</p>
+                        <p>My approach goes beyond just finding vulnerabilities — I delivered actionable, developer-friendly solutions to fix them effectively. Every report includes clear proof-of-concepts, risk severity, and step-by-step remediation guidance so development teams can quickly secure the application.</p>
+                        <p>Focused on not just breaking systems, but helping build them securely — ensuring long-term protection, resilience, and compliance against evolving cyber threats.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"><i class="fas fa-shield-alt"></i></div>
+                    <div class="glass-panel timeline-content">
+                        <div class="tl-tag tag-hack">CYBERSECURITY ENGINEERING</div>
+                        <h3>Cyber Security Engineer</h3>
+                        <h4>DeepByte Technology &bull; Full-time</h4>
+                        <span class="date"><i class="far fa-calendar-alt"></i> Jan 2023 - Jun 2024 &bull; 1 yr 6 mos &bull; Bengaluru, Karnataka, India</span>
+                        <ul class="product-list">
+                            <li>Performed comprehensive VAPT on web applications and network infrastructure using Nmap, Metasploit, Nessus, and Burp Suite.</li>
+                            <li>Led vulnerability management by identifying, analyzing, and mitigating security risks using Nessus, OpenVAS, and public CVE databases.</li>
+                            <li>Designed and executed phishing simulation campaigns to raise security awareness across internal teams.</li>
+                            <li>Developed a custom Python-based security tool for automated network discovery and PDF-based reporting.</li>
+                            <li>Applied OWASP Top 10, MITRE ATT&amp;CK, and NIST standards to perform structured risk assessments.</li>
+                            <li>Participated in red teaming exercises and exploit development to test and fortify the organization's security posture.</li>
+                            <li>Utilized Nikto, Gobuster, and Burp Suite Intruder for targeted scanning, enumeration, and exploitation.</li>
+                            <li>Ensured consistent application of security best practices and compliance requirements across infrastructure.</li>
+                        </ul>
+                        <div class="tl-skills"><span>Metasploit</span><span>OWASP ZAP</span><span>+15 skills</span></div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"><i class="fas fa-cog"></i></div>
+                    <div class="glass-panel timeline-content">
+                        <div class="tl-tag tag-robot">SYSTEMS ENGINEERING</div>
+                        <h3>System Engineer</h3>
+                        <h4>DeepByte Technology &bull; Internship</h4>
+                        <span class="date"><i class="far fa-calendar-alt"></i> Sep 2022 - Dec 2022 &bull; 4 mos &bull; Bengaluru, Karnataka, India &bull; On-site</span>
+                        <ul class="product-list">
+                            <li>Implemented Intrusion Detection Systems (IDS) using Snort to continuously monitor and analyze network traffic.</li>
+                            <li>Configured and maintained firewall rules using iptables for secure traffic control across critical systems.</li>
+                            <li>Utilized Git for version control, collaborative development, and streamlined CI/CD pipelines.</li>
+                            <li>Automated server provisioning and configuration using Ansible, improving deployment efficiency.</li>
+                            <li>Containerized applications using Docker and managed images for development and production environments.</li>
+                            <li>Deployed and orchestrated containers using Kubernetes for high availability and scalability.</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="glass-panel timeline-content">
-                        <h3>Chief Technology Officer</h3>
-                        <h4>Fincelerate</h4>
-                        <span class="date"><i class="far fa-calendar-alt"></i> Apr 2025 - Feb 2026 &bull; Remote</span>
-                        <p>Led strategic vision and execution of cybersecurity architecture for investment platforms. Directed implementation of enterprise-grade security protocols, championing advanced threat detection.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="glass-panel timeline-content">
-                        <h3>VAPT & Ethical Hacking Services</h3>
-                        <h4>Mindorigin Technologies Pvt Ltd</h4>
-                        <span class="date"><i class="far fa-calendar-alt"></i> Jun 2024 - Mar 2025 &bull; Bengaluru, India</span>
-                        <p>Provided comprehensive VAPT services to identify, analyze, and eliminate security risks across web applications, APIs, networks, and systems, delivering actionable remediation guidance.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="glass-panel timeline-content">
-                        <h3>Cyber Security Engineer</h3>
-                        <h4>DeepByte Technology</h4>
-                        <span class="date"><i class="far fa-calendar-alt"></i> Jan 2023 - Jun 2024 &bull; Bengaluru, India</span>
-                        <p>Performed VAPT on network infrastructure. Led vulnerability management, designed phishing simulations, and developed a custom Python-based network discovery and reporting tool.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="glass-panel timeline-content">
-                        <h3>System Engineer (Internship)</h3>
-                        <h4>DeepByte Technology</h4>
-                        <span class="date"><i class="far fa-calendar-alt"></i> Sep 2022 - Dec 2022 &bull; Bengaluru, India</span>
-                        <p>Implemented Intrusion Detection Systems using Snort, configured iptables firewalls, automated provisioning using Ansible, and managed container deployments via Docker and Kubernetes.</p>
-                    </div>
-                </div>
-
             </div>
         </section>
 
+        <!-- ==================== SKILLS ==================== -->
         <section id="skills" class="skills-section">
-            <h2 class="section-title">Core Modules: Skills</h2>
-            <div class="glass-panel skills-content">
-                <div class="skill-category">
-                    <h3>Cybersecurity & Hacking</h3>
-                    <ul class="skills-list-large">
-                        <li>Metasploit</li><li>OWASP ZAP</li><li>Wireshark</li><li>Ethical Hacking</li>
-                        <li>Burp Suite</li><li>Hashcat</li><li>BeEF</li><li>SQLmap</li>
-                        <li>Netcat</li><li>Nmap</li><li>Social Engineering</li><li>Network Security</li>
-                        <li>Maltego</li><li>Red Teaming</li><li>Scapy</li><li>Secure SDLC</li>
-                        <li>ISO 27001</li><li>ISO 27002</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Languages & Frameworks</h3>
-                    <ul class="skills-list-large">
-                        <li>Rust</li><li>Go</li><li>Swift</li><li>Python</li><li>Kotlin</li>
-                        <li>React.js</li><li>React Native</li><li>HTML</li><li>CSS</li><li>Flutter</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Infrastructure & Systems</h3>
-                    <ul class="skills-list-large">
-                        <li>Redis</li><li>Memcached</li><li>RabbitMQ</li><li>MongoDB</li><li>MySQL</li>
-                        <li>Nginx</li><li>Kubernetes</li><li>Docker</li><li>Git</li><li>Linux</li>
-                        <li>Linux System Administration</li><li>Server Admin</li><li>Windows</li><li>macOS</li>
-                        <li>Kali Linux</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Soft Skills</h3>
-                    <ul class="skills-list-large">
-                        <li>Leadership</li><li>Organizational Management</li><li>Creativity and Innovation</li><li>Entrepreneurship</li><li>LaTeX</li>
-                    </ul>
-                </div>
+            <div class="section-header">
+                <div class="section-badge badge-robot"><i class="fas fa-microchip"></i> CORE_MODULES</div>
+                <h2 class="section-title">Core Modules: Skills</h2>
             </div>
+
+            <div class="skills-dashboard">
+                <!-- Left: Category Nav -->
+                <div class="skills-nav">
+                    <div class="skills-nav-label">// SELECT MODULE</div>
+                    <button class="skill-tab active" data-tab="cyber">
+                        <span class="tab-icon"><i class="fas fa-skull-crossbones"></i></span>
+                        <span class="tab-text">Cybersecurity &amp; Hacking</span>
+                        <span class="tab-count">44</span>
+                    </button>
+                    <button class="skill-tab" data-tab="dev">
+                        <span class="tab-icon"><i class="fas fa-code"></i></span>
+                        <span class="tab-text">Development &amp; Coding</span>
+                        <span class="tab-count">20</span>
+                    </button>
+                    <button class="skill-tab" data-tab="devops">
+                        <span class="tab-icon"><i class="fas fa-infinity"></i></span>
+                        <span class="tab-text">DevOps</span>
+                        <span class="tab-count">17</span>
+                    </button>
+                    <button class="skill-tab" data-tab="infra">
+                        <span class="tab-icon"><i class="fas fa-server"></i></span>
+                        <span class="tab-text">Infrastructure &amp; Systems</span>
+                        <span class="tab-count">9</span>
+                    </button>
+                    <button class="skill-tab" data-tab="db">
+                        <span class="tab-icon"><i class="fas fa-database"></i></span>
+                        <span class="tab-text">Databases</span>
+                        <span class="tab-count">8</span>
+                    </button>
+                    <button class="skill-tab" data-tab="frameworks">
+                        <span class="tab-icon"><i class="fas fa-layer-group"></i></span>
+                        <span class="tab-text">Frameworks</span>
+                        <span class="tab-count">6</span>
+                    </button>
+                    <button class="skill-tab" data-tab="compliance">
+                        <span class="tab-icon"><i class="fas fa-shield-alt"></i></span>
+                        <span class="tab-text">Compliance</span>
+                        <span class="tab-count">11</span>
+                    </button>
+                    <button class="skill-tab" data-tab="soft">
+                        <span class="tab-icon"><i class="fas fa-brain"></i></span>
+                        <span class="tab-text">Soft Skills</span>
+                        <span class="tab-count">7</span>
+                    </button>
+                </div>
+
+                <!-- Right: Skills Display -->
+                <div class="skills-display">
+
+                    <div class="skill-pane active" id="tab-cyber">
+                        <div class="pane-header">
+                            <i class="fas fa-skull-crossbones pane-icon" style="color:#ff4455"></i>
+                            <div>
+                                <h3 class="pane-title">Cybersecurity &amp; Hacking</h3>
+                                <p class="pane-desc">Offensive &amp; defensive security tools and methodologies</p>
+                            </div>
+                        </div>
+                        <div class="skill-chips">
+                            <span class="chip chip-red">Ethical Hacking</span><span class="chip chip-red">Penetration Testing</span>
+                            <span class="chip chip-red">Red Teaming</span><span class="chip chip-red">Bug Bounty</span>
+                            <span class="chip chip-red">Social Engineering</span><span class="chip chip-red">Exploit Development</span>
+                            <span class="chip chip-red">Network Security</span><span class="chip chip-red">Web App Security</span>
+                            <span class="chip chip-red">OSINT</span><span class="chip chip-red">Metasploit</span>
+                            <span class="chip chip-red">Burp Suite</span><span class="chip chip-red">Nmap</span>
+                            <span class="chip chip-red">Wireshark</span><span class="chip chip-red">OWASP ZAP</span>
+                            <span class="chip chip-red">SQLmap</span><span class="chip chip-red">Hashcat</span>
+                            <span class="chip chip-red">BeEF</span><span class="chip chip-red">Netcat</span>
+                            <span class="chip chip-red">Maltego</span><span class="chip chip-red">Scapy</span>
+                            <span class="chip chip-red">Nikto</span><span class="chip chip-red">Gobuster</span>
+                            <span class="chip chip-red">Nessus</span><span class="chip chip-red">OpenVAS</span>
+                            <!-- Penetration Testing Specializations -->
+                            <div class="chip-group-label">// PENTEST SPECIALIZATIONS</div>
+                            <span class="chip chip-red">Network Penetration Testing</span>
+                            <span class="chip chip-red">Web Application Penetration Testing</span>
+                            <span class="chip chip-red">Mobile Application Penetration Testing</span>
+                            <span class="chip chip-red">API Penetration Testing</span>
+                            <span class="chip chip-red">Wireless Penetration Testing</span>
+                            <span class="chip chip-red">Cloud Penetration Testing</span>
+                            <span class="chip chip-red">IoT Penetration Testing</span>
+                            <span class="chip chip-red">Thick Client Penetration Testing</span>
+                            <span class="chip chip-red">Black Box Testing</span>
+                            <span class="chip chip-red">Gray Box Testing</span>
+                            <span class="chip chip-red">White Box Testing</span>
+                            <span class="chip chip-red">External Penetration Testing</span>
+                            <span class="chip chip-red">Internal Penetration Testing</span>
+                            <span class="chip chip-red">Social Engineering Testing</span>
+                            <span class="chip chip-red">Physical Penetration Testing</span>
+                            <span class="chip chip-red">Red Team Assessment</span>
+                            <span class="chip chip-red">Purple Team Exercise</span>
+                            <span class="chip chip-red">Assumed Breach Assessment</span>
+                            <span class="chip chip-red">Manual Penetration Testing</span>
+                            <span class="chip chip-red">Automated Penetration Testing</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-pane" id="tab-dev">
+                        <div class="pane-header">
+                            <i class="fas fa-code pane-icon" style="color:#00ffff"></i>
+                            <div>
+                                <h3 class="pane-title">Development &amp; Coding</h3>
+                                <p class="pane-desc">Programming languages and scripting environments</p>
+                            </div>
+                        </div>
+                        <div class="skill-chips">
+                            <div class="chip-group-label">// 1. PROGRAMMING LANGUAGES</div>
+                            <span class="chip chip-cyan">C</span><span class="chip chip-cyan">Embedded C</span>
+                            <span class="chip chip-cyan">C++</span><span class="chip chip-cyan">Dart</span>
+                            <span class="chip chip-cyan">Rust</span><span class="chip chip-cyan">Go</span>
+                            <span class="chip chip-cyan">Python</span><span class="chip chip-cyan">Swift</span>
+                            <span class="chip chip-cyan">Kotlin</span><span class="chip chip-cyan">JavaScript</span>
+                            
+                            <div class="chip-group-label">// 2. MARKUP &amp; DATA LANGUAGES</div>
+                            <span class="chip chip-cyan">HTML</span><span class="chip chip-cyan">XML</span>
+                            <span class="chip chip-cyan">LaTeX</span><span class="chip chip-cyan">JSON</span>
+                            <span class="chip chip-cyan">YAML</span>
+                            
+                            <div class="chip-group-label">// 3. STYLE SHEET LANGUAGES</div>
+                            <span class="chip chip-cyan">CSS</span>
+                            
+                            <div class="chip-group-label">// 4. SCRIPTING LANGUAGES</div>
+                            <span class="chip chip-cyan">Shell / Bash</span><span class="chip chip-cyan">PowerShell</span>
+                            
+                            <div class="chip-group-label">// 5. LOW-LEVEL LANGUAGES</div>
+                            <span class="chip chip-cyan">Machine Language (Machine Code)</span><span class="chip chip-cyan">Assembly Language</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-pane" id="tab-devops">
+                        <div class="pane-header">
+                            <i class="fas fa-infinity pane-icon" style="color:#00ff44"></i>
+                            <div>
+                                <h3 class="pane-title">DevOps</h3>
+                                <p class="pane-desc">Continuous integration, deployment and security automation</p>
+                            </div>
+                        </div>
+                        <div class="skill-chips">
+                            <span class="chip chip-green">Docker</span><span class="chip chip-green">Kubernetes</span>
+                            <span class="chip chip-green">Git</span><span class="chip chip-green">CI/CD Pipelines</span>
+                            <span class="chip chip-green">Ansible</span><span class="chip chip-green">DevSecOps</span>
+                            <span class="chip chip-green">Snort (IDS)</span><span class="chip chip-green">iptables</span>
+                            <span class="chip chip-green">GitHub</span><span class="chip chip-green">GitLab</span>
+                            <span class="chip chip-green">Chef</span><span class="chip chip-green">Puppet</span>
+                            <span class="chip chip-green">Prometheus</span><span class="chip chip-green">Grafana</span>
+                            <span class="chip chip-green">Kibana</span><span class="chip chip-green">Datadog</span>
+                            <span class="chip chip-green">Bitbucket</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-pane" id="tab-infra">
+                        <div class="pane-header">
+                            <i class="fas fa-server pane-icon" style="color:#4499ff"></i>
+                            <div>
+                                <h3 class="pane-title">Infrastructure &amp; Systems</h3>
+                                <p class="pane-desc">OS environments, networking and server administration</p>
+                            </div>
+                        </div>
+                        <div class="skill-chips">
+                            <span class="chip chip-blue">Linux</span><span class="chip chip-blue">Kali Linux</span>
+                            <span class="chip chip-blue">macOS</span><span class="chip chip-blue">Windows</span>
+                            <span class="chip chip-blue">Linux System Administration</span>
+                            <span class="chip chip-blue">Server Administration</span>
+                            <span class="chip chip-blue">Nginx</span><span class="chip chip-blue">Network Architecture</span>
+                            <span class="chip chip-blue">Firewall Configuration</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-pane" id="tab-db">
+                        <div class="pane-header">
+                            <i class="fas fa-database pane-icon" style="color:#9d00ff"></i>
+                            <div>
+                                <h3 class="pane-title">Databases</h3>
+                                <p class="pane-desc">Relational, NoSQL and in-memory data stores</p>
+                            </div>
+                        </div>
+                        <div class="skill-chips">
+                            <span class="chip chip-purple">MongoDB</span><span class="chip chip-purple">MySQL</span>
+                            <span class="chip chip-purple">Redis</span><span class="chip chip-purple">Memcached</span>
+                            <span class="chip chip-purple">RabbitMQ</span><span class="chip chip-purple">PostgreSQL</span>
+                            <span class="chip chip-purple">CockroachDB</span><span class="chip chip-purple">MS SQL</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-pane" id="tab-frameworks">
+                        <div class="pane-header">
+                            <i class="fas fa-layer-group pane-icon" style="color:#00ffff"></i>
+                            <div>
+                                <h3 class="pane-title">Frameworks</h3>
+                                <p class="pane-desc">UI, mobile, and security assessment frameworks</p>
+                            </div>
+                        </div>
+                        <div class="skill-chips">
+                            <span class="chip chip-cyan">React.js</span><span class="chip chip-cyan">React Native</span>
+                            <span class="chip chip-cyan">Flutter</span><span class="chip chip-cyan">MITRE ATT&amp;CK</span>
+                            <span class="chip chip-cyan">OWASP Top 10</span><span class="chip chip-cyan">NIST</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-pane" id="tab-compliance">
+                        <div class="pane-header">
+                            <i class="fas fa-shield-alt pane-icon" style="color:#ffdd00"></i>
+                            <div>
+                                <h3 class="pane-title">Compliance</h3>
+                                <p class="pane-desc">Security standards, auditing and regulatory frameworks</p>
+                            </div>
+                        </div>
+                        <div class="skill-chips">
+                            <span class="chip chip-yellow">ISO/IEC 27001 (ISMS)</span>
+                            <span class="chip chip-yellow">ISO/IEC 27002 (Security Controls)</span>
+                            <span class="chip chip-yellow">ISO/IEC 27005 (Risk Management)</span>
+                            <span class="chip chip-yellow">ISO/IEC 27701 (Privacy)</span>
+                            <span class="chip chip-yellow">NIST Cybersecurity Framework</span>
+                            <span class="chip chip-yellow">CIS Controls</span>
+                            <span class="chip chip-yellow">HIPAA</span>
+                            <span class="chip chip-yellow">PCI-DSS</span>
+                            <span class="chip chip-yellow">GDPR</span>
+                            <span class="chip chip-yellow">CERT-In</span>
+                            <span class="chip chip-yellow">SEBI</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-pane" id="tab-soft">
+                        <div class="pane-header">
+                            <i class="fas fa-brain pane-icon" style="color:#9d00ff"></i>
+                            <div>
+                                <h3 class="pane-title">Soft Skills</h3>
+                                <p class="pane-desc">Leadership, vision and organizational capabilities</p>
+                            </div>
+                        </div>
+                        <div class="skill-chips">
+                            <span class="chip chip-purple">Leadership</span><span class="chip chip-purple">Entrepreneurship</span>
+                            <span class="chip chip-purple">Organizational Management</span>
+                            <span class="chip chip-purple">Creativity &amp; Innovation</span>
+                            <span class="chip chip-purple">Strategic Planning</span>
+                            <span class="chip chip-purple">Team Building</span>
+                            <span class="chip chip-purple">Product Vision</span>
+                        </div>
+                    </div>
+
+                </div><!-- end skills-display -->
+            </div><!-- end skills-dashboard -->
         </section>
 
+
+        <!-- ==================== ACHIEVEMENTS ==================== -->
         <section id="achievements" class="achievements-section">
-            <h2 class="section-title">Trophies: Certifications & Achievements</h2>
-            <div class="glass-panel achievements-content">
-                <div class="achievement-group">
-                    <h3><i class="fas fa-certificate"></i> Certifications</h3>
+            <div class="section-header">
+                <div class="section-badge badge-hack"><i class="fas fa-trophy"></i> TROPHIES</div>
+                <h2 class="section-title">Trophies: Certifications &amp; Achievements</h2>
+            </div>
+            <div class="achievements-grid">
+                <div class="glass-panel achieve-card">
+                    <div class="achieve-icon"><i class="fas fa-certificate"></i></div>
+                    <h3>Certifications</h3>
                     <ul class="achievement-list">
-                        <li>CCNA (Cisco Certified Network Associate)</li>
-                        <li>Certified Ethical Hacker (CEH)</li>
-                        <li>CISA (Certified Information Systems Auditor)</li>
-                        <li>C-Pent (Certified Penetration Testing Professional)</li>
+                        <li><i class="fas fa-angle-right"></i> CCNA – Cisco Certified Network Associate</li>
+                        <li><i class="fas fa-angle-right"></i> Certified Ethical Hacker (CEH)</li>
+                        <li><i class="fas fa-angle-right"></i> CISA – Certified Information Systems Auditor</li>
+                        <li><i class="fas fa-angle-right"></i> C-Pent – Certified Penetration Testing Professional</li>
                     </ul>
                 </div>
-                <div class="achievement-group mt-4">
-                    <h3><i class="fas fa-trophy"></i> Achievements</h3>
+                <div class="glass-panel achieve-card">
+                    <div class="achieve-icon achieve-icon-gold"><i class="fas fa-trophy"></i></div>
+                    <h3>Achievements</h3>
                     <ul class="achievement-list">
-                        <li>Published IEEE Paper</li>
-                        <li>1st Place in Engineering for Capstone Project</li>
-                        <li>Capture the Flags (CTF)</li>
-                        <li>Bug Bounty</li>
+                        <li><i class="fas fa-angle-right"></i> Published IEEE Research Paper</li>
+                        <li><i class="fas fa-angle-right"></i> 1st Place — Engineering Capstone Project</li>
+                        <li><i class="fas fa-angle-right"></i> Capture the Flag (CTF) Competitions</li>
+                        <li><i class="fas fa-angle-right"></i> Bug Bounty Hunter</li>
                     </ul>
                 </div>
             </div>
         </section>
 
+        <!-- ==================== EDUCATION ==================== -->
         <section id="education" class="education-section">
-            <h2 class="section-title">Knowledge Base: Education</h2>
+            <div class="section-header">
+                <div class="section-badge badge-robot"><i class="fas fa-database"></i> KNOWLEDGE_BASE</div>
+                <h2 class="section-title">Knowledge Base: Education</h2>
+            </div>
             <div class="education-grid">
-                
+
                 <div class="glass-panel edu-card">
-                    <i class="fas fa-university edu-icon"></i>
+                    <div class="edu-icon-wrap"><i class="fas fa-university edu-icon"></i></div>
                     <h3>Golden Gate University</h3>
                     <h4>DBA, Business Administration</h4>
                     <span class="date">Jun 2025 – Jun 2030</span>
@@ -197,7 +502,7 @@
                 </div>
 
                 <div class="glass-panel edu-card">
-                    <i class="fas fa-shield-virus edu-icon"></i>
+                    <div class="edu-icon-wrap"><i class="fas fa-shield-virus edu-icon"></i></div>
                     <h3>PES University</h3>
                     <h4>MTech, CyberSecurity</h4>
                     <span class="date">Feb 2023 – Jul 2024</span>
@@ -205,7 +510,7 @@
                 </div>
 
                 <div class="glass-panel edu-card">
-                    <i class="fas fa-laptop-code edu-icon"></i>
+                    <div class="edu-icon-wrap"><i class="fas fa-laptop-code edu-icon"></i></div>
                     <h3>K S School of Engineering</h3>
                     <h4>BE, Computer Science</h4>
                     <span class="date">Aug 2016 – Mar 2022</span>
@@ -218,11 +523,23 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 Suyog L. Secure by Design. Building the #Psychyverse.</p>
+        <div class="footer-inner">
+            <div class="footer-logo">[SUYOG<span class="highlight">.L</span>]</div>
+            <p>&copy; 2026 Suyog L. Secure by Design. Building the #Psychyverse.</p>
+            <div class="footer-tags">
+                <span>HACKER</span><span>AI</span><span>ROBOTICS</span><span>CYBERSEC</span>
+            </div>
+        </div>
     </footer>
 
     <!-- Three.js for 3D Cyber Background -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/postprocessing/EffectComposer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/postprocessing/RenderPass.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/postprocessing/ShaderPass.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/shaders/CopyShader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -4,79 +4,187 @@ const initThreeJS = () => {
     if (!container) return;
 
     const scene = new THREE.Scene();
-    
-    // Cyberpunk fog
-    scene.fog = new THREE.FogExp2(0x070714, 0.0015);
+    scene.fog = new THREE.FogExp2(0x050510, 0.0015);
 
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 180;
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 3000);
+    // Base camera position will be updated by scroll
+    camera.position.set(0, 50, 350);
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false, powerPreference: "high-performance" });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // optimize performance
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.toneMapping = THREE.ReinhardToneMapping;
     container.appendChild(renderer.domElement);
 
-    // Particles setup
-    const particleCount = 250;
-    const geometry = new THREE.BufferGeometry();
-    const positions = new Float32Array(particleCount * 3);
-    const velocities = [];
+    // --- Post-Processing (Neon Bloom) ---
+    const renderScene = new THREE.RenderPass(scene, camera);
+    const bloomPass = new THREE.UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.85);
+    bloomPass.threshold = 0.1;
+    bloomPass.strength = 1.8; // intense glow
+    bloomPass.radius = 0.5;
 
-    for (let i = 0; i < particleCount * 3; i += 3) {
-        // Spread particles in a wider box
-        positions[i] = (Math.random() - 0.5) * 600;     // x
-        positions[i + 1] = (Math.random() - 0.5) * 600; // y
-        positions[i + 2] = (Math.random() - 0.5) * 400; // z
+    const composer = new THREE.EffectComposer(renderer);
+    composer.addPass(renderScene);
+    composer.addPass(bloomPass);
 
-        velocities.push({
-            x: (Math.random() - 0.5) * 0.4,
-            y: (Math.random() - 0.5) * 0.4,
-            z: (Math.random() - 0.5) * 0.4
+    // --- 1. The Central AI Core (AI Theme) ---
+    const coreGroup = new THREE.Group();
+    scene.add(coreGroup);
+
+    const coreGeom = new THREE.IcosahedronGeometry(22, 2);
+    const coreMat = new THREE.MeshBasicMaterial({
+        color: 0x9d00ff, // Purple AI energy
+        wireframe: true,
+        transparent: true,
+        opacity: 0.8,
+        blending: THREE.AdditiveBlending
+    });
+    const aiCore = new THREE.Mesh(coreGeom, coreMat);
+    coreGroup.add(aiCore);
+
+    const shellGeom = new THREE.IcosahedronGeometry(30, 1);
+    const shellMat = new THREE.MeshBasicMaterial({
+        color: 0x00ffff, 
+        wireframe: true,
+        transparent: true,
+        opacity: 0.4,
+        blending: THREE.AdditiveBlending
+    });
+    const aiShell = new THREE.Mesh(shellGeom, shellMat);
+    coreGroup.add(aiShell);
+
+    // --- 2. Robotic Gyroscopic Rings (Robotics Theme) ---
+    const rings = [];
+    for(let i = 0; i < 6; i++) {
+        const color = (i % 2 === 0) ? 0x00ffff : 0x7777aa; 
+        const ringGeom = new THREE.TorusGeometry(55 + (i * 18), 1.5, 8, 60);
+        const ringMat = new THREE.MeshBasicMaterial({
+            color: color,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.35 + (i * 0.05)
+        });
+        const ring = new THREE.Mesh(ringGeom, ringMat);
+        
+        ring.rotation.x = Math.random() * Math.PI;
+        ring.rotation.y = Math.random() * Math.PI;
+        
+        coreGroup.add(ring);
+        rings.push({
+            mesh: ring,
+            speedX: (Math.random() - 0.5) * 0.02,
+            speedY: (Math.random() - 0.5) * 0.02,
+            speedZ: (Math.random() - 0.5) * 0.02
         });
     }
 
-    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    // --- 3. Hacker Matrix Rain (Cybersecurity/Hacker Theme) ---
+    const rainCount = 1500;
+    const rainGeo = new THREE.BufferGeometry();
+    const rainPositions = new Float32Array(rainCount * 3);
+    for(let i = 0; i < rainCount * 3; i += 3) {
+        rainPositions[i] = (Math.random() - 0.5) * 2000;     // x
+        rainPositions[i + 1] = (Math.random() - 0.5) * 2000; // y
+        rainPositions[i + 2] = (Math.random() - 0.5) * 2000; // z
+    }
+    rainGeo.setAttribute('position', new THREE.BufferAttribute(rainPositions, 3));
+    
+    const rainCanvas = document.createElement('canvas');
+    rainCanvas.width = 16;
+    rainCanvas.height = 32;
+    const rc = rainCanvas.getContext('2d');
+    rc.fillStyle = '#00ff44'; // Hacker Green
+    rc.font = '16px monospace';
+    rc.fillText('1', 0, 16);
+    rc.fillText('0', 0, 32);
+    const rainTexture = new THREE.CanvasTexture(rainCanvas);
 
-    // Custom circular particle texture (optional but looks better)
-    const canvas = document.createElement('canvas');
-    canvas.width = 16;
-    canvas.height = 16;
-    const context = canvas.getContext('2d');
-    context.beginPath();
-    context.arc(8, 8, 8, 0, 2 * Math.PI, false);
-    context.fillStyle = '#ffffff';
-    context.fill();
-    const texture = new THREE.CanvasTexture(canvas);
+    const rainMat = new THREE.PointsMaterial({
+        color: 0x00ff44,
+        size: 8,
+        map: rainTexture,
+        transparent: true,
+        opacity: 0.6,
+        blending: THREE.AdditiveBlending
+    });
+    const matrixRain = new THREE.Points(rainGeo, rainMat);
+    scene.add(matrixRain);
 
-    const material = new THREE.PointsMaterial({
-        color: 0x00ffff, // Cyan
+    // --- 4. Neural Data Particles (Cyberspace) ---
+    const particleCount = 350;
+    const pGeometry = new THREE.BufferGeometry();
+    const pPositions = new Float32Array(particleCount * 3);
+    const pOrbit = [];
+
+    for (let i = 0; i < particleCount * 3; i += 3) {
+        const radius = 80 + Math.random() * 800;
+        const theta = Math.random() * Math.PI * 2;
+        const phi = Math.acos((Math.random() * 2) - 1);
+        
+        pPositions[i] = radius * Math.sin(phi) * Math.cos(theta);
+        pPositions[i + 1] = radius * Math.sin(phi) * Math.sin(theta);
+        pPositions[i + 2] = radius * Math.cos(phi);
+
+        pOrbit.push({
+            radius: radius,
+            theta: theta,
+            phi: phi,
+            speed: (Math.random() * 0.015) + 0.005,
+            direction: Math.random() > 0.5 ? 1 : -1
+        });
+    }
+    pGeometry.setAttribute('position', new THREE.BufferAttribute(pPositions, 3));
+
+    const pCanvas = document.createElement('canvas');
+    pCanvas.width = 16;
+    pCanvas.height = 16;
+    const pc = pCanvas.getContext('2d');
+    pc.beginPath();
+    pc.arc(8, 8, 8, 0, 2 * Math.PI, false);
+    pc.fillStyle = '#ffffff';
+    pc.fill();
+    const pTexture = new THREE.CanvasTexture(pCanvas);
+
+    const pMaterial = new THREE.PointsMaterial({
+        color: 0x00ffff,
         size: 3,
-        map: texture,
+        map: pTexture,
         transparent: true,
         opacity: 0.8,
-        alphaTest: 0.1,
         blending: THREE.AdditiveBlending
     });
-
-    const particles = new THREE.Points(geometry, material);
+    const particles = new THREE.Points(pGeometry, pMaterial);
     scene.add(particles);
 
-    // Lines for network effect
-    const lineMaterial = new THREE.LineBasicMaterial({
-        color: 0x9d00ff, // Purple
+    const lineMat = new THREE.LineBasicMaterial({
+        color: 0x9d00ff,
         transparent: true,
-        opacity: 0.15,
+        opacity: 0.25,
         blending: THREE.AdditiveBlending
     });
-
-    const linesMesh = new THREE.LineSegments(new THREE.BufferGeometry(), lineMaterial);
+    const linesMesh = new THREE.LineSegments(new THREE.BufferGeometry(), lineMat);
     scene.add(linesMesh);
+
+    // --- 5. Cyberspace Floor Grid ---
+    const gridGeom = new THREE.PlaneGeometry(4000, 4000, 80, 80);
+    const gridPositions = gridGeom.attributes.position.array;
+    for (let i = 0; i < gridPositions.length; i += 3) {
+        gridPositions[i + 2] = (Math.random() - 0.5) * 40; 
+    }
+    const gridMat = new THREE.LineBasicMaterial({
+        color: 0x0066ff,
+        transparent: true,
+        opacity: 0.2,
+        blending: THREE.AdditiveBlending
+    });
+    const gridFloor = new THREE.LineSegments(new THREE.WireframeGeometry(gridGeom), gridMat);
+    gridFloor.rotation.x = -Math.PI / 2;
+    gridFloor.position.y = -200;
+    scene.add(gridFloor);
 
     // Mouse Interaction
     let mouseX = 0;
     let mouseY = 0;
-    let targetX = 0;
-    let targetY = 0;
     const windowHalfX = window.innerWidth / 2;
     const windowHalfY = window.innerHeight / 2;
 
@@ -85,66 +193,121 @@ const initThreeJS = () => {
         mouseY = (event.clientY - windowHalfY);
     });
 
+    // Scroll Tracking for 3D Effect
+    let scrollY = window.scrollY;
+    document.addEventListener('scroll', () => {
+        scrollY = window.scrollY;
+    });
+
     // Animation Loop
+    let time = 0;
     const animate = () => {
         requestAnimationFrame(animate);
+        time += 0.01;
 
-        // Smooth camera movement (parallax)
-        targetX = mouseX * 0.08;
-        targetY = mouseY * 0.08;
-        camera.position.x += (targetX - camera.position.x) * 0.05;
-        camera.position.y += (-targetY - camera.position.y) * 0.05;
-        camera.lookAt(scene.position);
+        // --- Scrolling 3D Camera Effect ---
+        // Dive into the cyberspace as you scroll down
+        const targetScrollZ = 350 - (scrollY * 0.4); 
+        // Barrel roll camera slightly on scroll
+        const targetScrollRotZ = scrollY * -0.0002; 
 
-        const positions = particles.geometry.attributes.position.array;
+        // Apply mouse parallax on top of scroll position
+        const targetX = mouseX * 0.2;
+        const targetY = mouseY * 0.2;
         
-        // Update particle positions
-        for (let i = 0; i < particleCount; i++) {
-            positions[i * 3] += velocities[i].x;
-            positions[i * 3 + 1] += velocities[i].y;
-            positions[i * 3 + 2] += velocities[i].z;
+        camera.position.x += (targetX - camera.position.x) * 0.05;
+        camera.position.y += (-targetY + 50 - camera.position.y) * 0.05;
+        camera.position.z += (targetScrollZ - camera.position.z) * 0.05;
+        
+        camera.rotation.z += (targetScrollRotZ - camera.rotation.z) * 0.05;
+        
+        // Ensure camera looks generally forward towards the core, modified by mouse
+        camera.lookAt(new THREE.Vector3(mouseX * 0.1, -mouseY * 0.1, -100));
 
-            // Bounce off edges
-            if (positions[i * 3] < -300 || positions[i * 3] > 300) velocities[i].x *= -1;
-            if (positions[i * 3 + 1] < -300 || positions[i * 3 + 1] > 300) velocities[i].y *= -1;
-            if (positions[i * 3 + 2] < -200 || positions[i * 3 + 2] > 200) velocities[i].z *= -1;
+        // --- Animate Hacker Matrix Rain ---
+        const rainPosArray = matrixRain.geometry.attributes.position.array;
+        for(let i = 0; i < rainCount; i++) {
+            rainPosArray[i * 3 + 1] -= 6; // fall speed
+            if(rainPosArray[i * 3 + 1] < -1000) {
+                rainPosArray[i * 3 + 1] = 1000; // reset at top
+            }
+        }
+        matrixRain.geometry.attributes.position.needsUpdate = true;
+
+        // --- Core Pulsating & Rotation (AI Breathing Effect) ---
+        const scale = 1 + Math.sin(time * 2) * 0.08;
+        aiCore.scale.set(scale, scale, scale);
+        aiCore.rotation.y += 0.02;
+        aiCore.rotation.x += 0.01;
+        
+        aiShell.scale.set(1 + Math.cos(time * 1.5) * 0.04, 1 + Math.cos(time * 1.5) * 0.04, 1 + Math.cos(time * 1.5) * 0.04);
+        aiShell.rotation.y -= 0.015;
+        aiShell.rotation.z += 0.01;
+
+        // --- Robotic Rings Gyroscopic Motion ---
+        rings.forEach((r, idx) => {
+            r.mesh.rotation.x += r.speedX;
+            r.mesh.rotation.y += r.speedY;
+            r.mesh.rotation.z += r.speedZ;
+            // React to scroll by spinning faster when diving deeper
+            r.mesh.rotation.z += (scrollY * 0.00005 * (idx % 2 === 0 ? 1 : -1));
+        });
+        
+        coreGroup.position.y = Math.sin(time) * 10;
+        // Move core forward as you scroll deep so it passes by
+        coreGroup.position.z = scrollY * 0.1;
+
+        // --- Orbiting Neural Particles (Data feeding into AI) ---
+        const posArray = particles.geometry.attributes.position.array;
+        for (let i = 0; i < particleCount; i++) {
+            const orb = pOrbit[i];
+            orb.theta += orb.speed * orb.direction;
+            
+            // Constantly pulling data into the core
+            orb.radius -= 0.8;
+            if (orb.radius < 50) {
+                orb.radius = 200 + Math.random() * 600; 
+            }
+
+            posArray[i * 3] = orb.radius * Math.sin(orb.phi) * Math.cos(orb.theta) + coreGroup.position.x;
+            posArray[i * 3 + 1] = orb.radius * Math.sin(orb.phi) * Math.sin(orb.theta) + coreGroup.position.y;
+            posArray[i * 3 + 2] = orb.radius * Math.cos(orb.phi) + coreGroup.position.z;
         }
         particles.geometry.attributes.position.needsUpdate = true;
 
-        // Dynamic lines based on proximity
+        // --- Neural Connections ---
         const linePositions = [];
         for (let i = 0; i < particleCount; i++) {
             for (let j = i + 1; j < particleCount; j++) {
-                const dx = positions[i * 3] - positions[j * 3];
-                const dy = positions[i * 3 + 1] - positions[j * 3 + 1];
-                const dz = positions[i * 3 + 2] - positions[j * 3 + 2];
-                const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+                const dx = posArray[i * 3] - posArray[j * 3];
+                const dy = posArray[i * 3 + 1] - posArray[j * 3 + 1];
+                const dz = posArray[i * 3 + 2] - posArray[j * 3 + 2];
+                const distSq = dx*dx + dy*dy + dz*dz;
 
-                // If particles are close, draw a line between them
-                if (dist < 60) {
+                if (distSq < 15000) { 
                     linePositions.push(
-                        positions[i * 3], positions[i * 3 + 1], positions[i * 3 + 2],
-                        positions[j * 3], positions[j * 3 + 1], positions[j * 3 + 2]
+                        posArray[i * 3], posArray[i * 3 + 1], posArray[i * 3 + 2],
+                        posArray[j * 3], posArray[j * 3 + 1], posArray[j * 3 + 2]
                     );
                 }
             }
         }
         linesMesh.geometry.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
 
-        // Slowly rotate scene
-        scene.rotation.y += 0.0005;
-        scene.rotation.x += 0.0002;
+        // --- Grid Scrolling ---
+        gridFloor.position.z = (time * 40) % 80;
 
-        renderer.render(scene, camera);
+        // Render with Bloom
+        composer.render();
     };
 
     animate();
 
-    // Handle Window Resize
     window.addEventListener('resize', () => {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
+        composer.setSize(window.innerWidth, window.innerHeight);
     });
 };
 
@@ -204,10 +367,43 @@ const initNavbarEffects = () => {
     });
 };
 
+// Skills Tab Switching
+const initSkillsTabs = () => {
+    const tabs = document.querySelectorAll('.skill-tab');
+    const panes = document.querySelectorAll('.skill-pane');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const target = tab.dataset.tab;
+
+            tabs.forEach(t => t.classList.remove('active'));
+            panes.forEach(p => p.classList.remove('active'));
+
+            tab.classList.add('active');
+            const pane = document.getElementById('tab-' + target);
+            if (pane) {
+                pane.classList.add('active');
+                // Re-trigger chip animations
+                pane.querySelectorAll('.chip').forEach(chip => {
+                    chip.style.animation = 'none';
+                    chip.offsetHeight; // reflow
+                    chip.style.animation = '';
+                });
+            }
+        });
+    });
+};
+
 // Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    initThreeJS();
-    initScrollAnimations();
-    initSmoothScroll();
-    initNavbarEffects();
+    try { initThreeJS(); } catch(e) { console.warn('Three.js init failed:', e); }
+    try { initScrollAnimations(); } catch(e) { console.warn('Scroll animations failed:', e); }
+    try { initSmoothScroll(); } catch(e) { console.warn('Smooth scroll failed:', e); }
+    try { initNavbarEffects(); } catch(e) { console.warn('Navbar effects failed:', e); }
+    try { initSkillsTabs(); } catch(e) { console.warn('Skills tabs failed:', e); }
 });
+
+// Also run skills tabs immediately if DOM is already ready (fallback)
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    setTimeout(() => { try { initSkillsTabs(); } catch(e) {} }, 100);
+}
