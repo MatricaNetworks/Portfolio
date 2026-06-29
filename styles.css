@@ -351,3 +351,35 @@ footer p{font-family:var(--mono);font-size:.75rem;color:#445;letter-spacing:1px;
   .education-grid{grid-template-columns:1fr;}
   section{padding:100px 0;}
 }
+@media(max-width:480px){
+  .main-content{padding:0 1rem;}
+  .nav-content{padding:0 1rem;gap:1rem;}
+  .glass-panel{padding:1.5rem;}
+  .skills-display{padding:1.5rem;}
+  .glitch{font-size:1.8rem;}
+  .timeline::before{left:14px;}
+  .timeline-dot{left:3px;width:20px;height:20px;}
+  .timeline-item{padding-left:45px;margin-bottom:2rem;}
+  .hero-section{padding-top:120px;}
+  section{padding:80px 0;}
+  .logo{font-size:1.2rem;}
+  .pane-header{flex-direction:column;align-items:flex-start;}
+}
+@media(max-width:360px){
+  .glitch{font-size:1.4rem;}
+  .glass-panel{padding:1rem;}
+  .skills-display{padding:1rem;}
+  .hacker-btn{font-size:.85rem;}
+  .timeline-item{padding-left:35px;}
+  .timeline-dot{left:-2px;}
+  .timeline::before{left:9px;}
+  .skill-tab{padding:.6rem;}
+  .tab-text{font-size:.65rem;}
+  .nav-content{flex-direction:column;align-items:flex-start;padding:.5rem 1rem;}
+  .navbar{padding:.5rem 0;}
+}
+@media(max-width:280px){
+  .glitch{font-size:1.1rem;}
+  .logo{font-size:1rem;}
+  .chip{padding:.3rem .6rem;font-size:.7rem;}
+}
