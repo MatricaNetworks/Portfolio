@@ -85,8 +85,12 @@ h1,h2,h3,h4{font-family:var(--hud);letter-spacing:2px;}
 
 /* ── HERO ── */
 .hero-section{padding-top:160px;}
-.hero-layout{display:grid;grid-template-columns:280px 1fr;gap:2.5rem;align-items:start;width:100%;}
-.hero-layout-single{display:block;max-width:900px;margin:0 auto;width:100%;}
+.hero-layout{display:grid;grid-template-columns:1fr 340px;gap:3rem;align-items:center;width:100%;max-width:1100px;margin:0 auto;}
+.hero-profile-pic { display: flex; justify-content: center; align-items: center; position: relative; }
+.cyber-avatar { width: 100%; max-width: 320px; height: auto; border-radius: 16px; border: 2px solid rgba(0, 255, 255, 0.3); box-shadow: 0 0 40px rgba(0, 255, 255, 0.15); filter: drop-shadow(0 0 15px rgba(0, 255, 255, 0.2)); animation: floatAvatar 6s ease-in-out infinite; position: relative; z-index: 2; }
+.cyber-avatar-ring { display: none; }
+@keyframes spinRing { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+@keyframes floatAvatar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 
 
 /* ID Badge */
@@ -488,6 +492,8 @@ footer p{font-family:var(--mono);font-size:.75rem;color:#445;letter-spacing:1px;
   .timeline-dot{left:3px;width:20px;height:20px;}
   .timeline-item{padding-left:45px;margin-bottom:2rem;}
   .hero-section{padding-top:100px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center;}
+  .cyber-avatar-ring { width: 260px; height: 260px; }
+  .cyber-avatar { max-width: 220px; }
   section{padding:80px 0;}
   .logo{font-size:1.2rem;}
   .pane-header{flex-direction:column;align-items:flex-start;}
@@ -515,6 +521,8 @@ footer p{font-family:var(--mono);font-size:.75rem;color:#445;letter-spacing:1px;
   .chip{padding:.3rem .6rem;font-size:.7rem;}
   .hacker-btn{font-size:.75rem;}
   .terminal-title{font-size:0.7rem;}
+  .cyber-avatar-ring { width: 200px; height: 200px; }
+  .cyber-avatar { max-width: 170px; }
 }
 
 /* Tall aspect ratio optimizations (Flip Phones in vertical mode) */
