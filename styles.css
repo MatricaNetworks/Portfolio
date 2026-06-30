@@ -85,10 +85,8 @@ h1,h2,h3,h4{font-family:var(--hud);letter-spacing:2px;}
 
 /* ── HERO ── */
 .hero-section{padding-top:160px;}
-.hero-layout{display:grid;grid-template-columns:1fr 340px;gap:3rem;align-items:center;width:100%;max-width:1100px;margin:0 auto;}
-.hero-profile-pic { display: flex; justify-content: center; align-items: center; position: relative; }
-.cyber-avatar { width: 100%; max-width: 320px; height: auto; border-radius: 16px; border: 2px solid rgba(0, 255, 255, 0.3); box-shadow: 0 0 40px rgba(0, 255, 255, 0.15); filter: drop-shadow(0 0 15px rgba(0, 255, 255, 0.2)); animation: floatAvatar 6s ease-in-out infinite; position: relative; z-index: 2; }
-.cyber-avatar-ring { display: none; }
+.hero-layout{display:block;max-width:900px;margin:0 auto;width:100%;}
+.terminal-avatar { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid var(--cyan); box-shadow: 0 0 20px rgba(0, 255, 255, 0.3); }
 @keyframes spinRing { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 @keyframes floatAvatar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 
