@@ -12,20 +12,27 @@ const initThreeJS = () => {
 
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false, powerPreference: "high-performance" });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    const isMobile = window.innerWidth < 768;
+    renderer.setPixelRatio(isMobile ? 1 : Math.min(window.devicePixelRatio, 2));
     renderer.toneMapping = THREE.ReinhardToneMapping;
     container.appendChild(renderer.domElement);
 
     // --- Post-Processing (Neon Bloom) ---
     const renderScene = new THREE.RenderPass(scene, camera);
-    const bloomPass = new THREE.UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.85);
+    const bloomPass = new THREE.UnrealBloomPass(
+        new THREE.Vector2(window.innerWidth, window.innerHeight), 
+        1.5, 0.4, 0.85
+    );
     bloomPass.threshold = 0.1;
-    bloomPass.strength = 1.8; // intense glow
+    bloomPass.strength = isMobile ? 1.2 : 1.8; // Lower intensity on mobile
     bloomPass.radius = 0.5;
 
     const composer = new THREE.EffectComposer(renderer);
     composer.addPass(renderScene);
-    composer.addPass(bloomPass);
+    if (!isMobile) {
+        // Only add expensive bloom pass on desktop to preserve mobile scroll 60fps
+        composer.addPass(bloomPass);
+    }
 
     // --- 1. The Central AI Core (AI Theme) ---
     const coreGroup = new THREE.Group();
@@ -277,18 +284,21 @@ const initThreeJS = () => {
 
         // --- Neural Connections ---
         const linePositions = [];
-        for (let i = 0; i < particleCount; i++) {
-            for (let j = i + 1; j < particleCount; j++) {
-                const dx = posArray[i * 3] - posArray[j * 3];
-                const dy = posArray[i * 3 + 1] - posArray[j * 3 + 1];
-                const dz = posArray[i * 3 + 2] - posArray[j * 3 + 2];
-                const distSq = dx*dx + dy*dy + dz*dz;
+        // Skip intense O(N^2) CPU calculations on mobile to maintain 60fps scrolling
+        if (!isMobile) {
+            for (let i = 0; i < particleCount; i++) {
+                for (let j = i + 1; j < particleCount; j++) {
+                    const dx = posArray[i * 3] - posArray[j * 3];
+                    const dy = posArray[i * 3 + 1] - posArray[j * 3 + 1];
+                    const dz = posArray[i * 3 + 2] - posArray[j * 3 + 2];
+                    const distSq = dx*dx + dy*dy + dz*dz;
 
-                if (distSq < 15000) { 
-                    linePositions.push(
-                        posArray[i * 3], posArray[i * 3 + 1], posArray[i * 3 + 2],
-                        posArray[j * 3], posArray[j * 3 + 1], posArray[j * 3 + 2]
-                    );
+                    if (distSq < 15000) { 
+                        linePositions.push(
+                            posArray[i * 3], posArray[i * 3 + 1], posArray[i * 3 + 2],
+                            posArray[j * 3], posArray[j * 3 + 1], posArray[j * 3 + 2]
+                        );
+                    }
                 }
             }
         }
@@ -297,8 +307,12 @@ const initThreeJS = () => {
         // --- Grid Scrolling ---
         gridFloor.position.z = (time * 40) % 80;
 
-        // Render with Bloom
-        composer.render();
+        // Render with Bloom on desktop, fast raw render on mobile
+        if (isMobile) {
+            renderer.render(scene, camera);
+        } else {
+            composer.render();
+        }
     };
 
     animate();
@@ -396,6 +410,12 @@ const initSkillsTabs = () => {
 
 // Custom Cursor Logic
 const initCustomCursor = () => {
+    // Disable custom cursor overhead on mobile/touch devices to prevent scroll lag
+    if (window.innerWidth < 768 || 'ontouchstart' in window || navigator.maxTouchPoints > 0) {
+        document.body.style.cursor = 'auto'; // Restore default behavior
+        return;
+    }
+
     const cursor = document.createElement('div');
     cursor.className = 'custom-cursor';
     cursor.innerHTML = `
