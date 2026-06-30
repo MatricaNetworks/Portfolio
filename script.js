@@ -485,17 +485,21 @@ const initInteractiveTerminal = () => {
                 output.innerHTML += `<div>${response}</div>`;
             }
         }
+        
+        // Auto scroll to bottom
+        output.scrollTop = output.scrollHeight;
     };
 
-    const terminalBody = document.querySelector('.terminal-body');
-    if (terminalBody) {
-        terminalBody.addEventListener('click', () => {
+    const terminalWindow = document.querySelector('.terminal-window');
+    if (terminalWindow) {
+        terminalWindow.addEventListener('click', () => {
             input.focus();
         });
     }
 
     input.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.keyCode === 13) {
+            e.preventDefault();
             const cmd = input.value;
             input.value = '';
             processCommand(cmd);

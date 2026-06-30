@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Suyog L - Ethical Hacker, Cybersecurity Engineer, and CEO at Matrica Networks. Building the Psychyverse.">
     <title>Suyog L | Cybersecurity Engineer &amp; CEO</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -52,7 +52,7 @@
                 <div class="hero-terminal terminal-window">
                     <div class="terminal-header">
                         <span class="t-btn t-red"></span><span class="t-btn t-yellow"></span><span class="t-btn t-green"></span>
-                        <div class="terminal-title">root@psychyverse:~#</div>
+                        <div class="terminal-title">bash - root@psychyverse</div>
                     </div>
                     <div class="terminal-body">
                         <h1 class="glitch" data-text="Suyog L">Suyog L</h1>
@@ -69,10 +69,10 @@
                             <a href="https://www.matricanetworks.com" target="_blank" class="hacker-btn"><span class="prompt">$</span> ping matricanetworks.com</a>
                             <a href="mailto:suyogln26@gmail.com" class="hacker-btn"><span class="prompt">$</span> ssh secure_contact@suyog.dev</a>
                         </div>
-                        <div id="interactive-terminal-output" style="margin-top: 20px; font-family: var(--mono); color: #ccc; font-size: 0.9rem; white-space: pre-wrap;"></div>
-                        <div class="terminal-input-row" style="margin-top: 10px; display: flex; align-items: center; gap: 10px; font-family: var(--mono); color: #00ff44;">
+                        <div id="interactive-terminal-output" style="margin-top: 20px; font-family: var(--mono); color: #ccc; font-size: 0.9rem; white-space: pre-wrap; max-height: 200px; overflow-y: auto; display: flex; flex-direction: column; gap: 4px;"></div>
+                        <div class="terminal-input-row" style="margin-top: 10px; display: flex; align-items: center; gap: 10px; font-family: var(--mono); color: #00ff44; position: relative;">
                             <span class="prompt">root@psychyverse:~#</span>
-                            <input type="text" id="interactive-terminal-input" autocomplete="off" spellcheck="false" style="background: transparent; border: none; color: #00ffff; font-family: var(--mono); font-size: 0.9rem; width: 100%; outline: none;" placeholder="Type 'help' for commands...">
+                            <input type="text" id="interactive-terminal-input" autocomplete="off" spellcheck="false" style="background: transparent; border: none; color: #00ffff; font-family: var(--mono); font-size: 0.9rem; width: 100%; outline: none;" placeholder="Type 'help' and press Enter...">
                         </div>
                     </div>
                 </div>
@@ -537,6 +537,6 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/shaders/CopyShader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
-    <script src="script.js"></script>
+    <script src="script.js?v=2"></script>
 </body>
 </html>
