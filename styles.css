@@ -217,6 +217,103 @@ h1,h2,h3,h4{font-family:var(--hud);letter-spacing:2px;}
 .tl-skills{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem;}
 .tl-skills span{font-family:var(--mono);font-size:.65rem;padding:.2rem .7rem;border-radius:2px;background:rgba(0,255,255,.07);border:1px solid rgba(0,255,255,.2);color:#778;letter-spacing:1px;}
 
+.skills-toggle {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--cyan);
+    background: rgba(0, 255, 255, 0.1);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 4px;
+    cursor: pointer !important;
+    transition: all 0.3s ease;
+}
+.skills-toggle:hover {
+    background: rgba(0, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+.expandable-skills {
+    display: none;
+    margin-top: 1rem;
+}
+.expandable-skills.active {
+    display: flex;
+    animation: fadeIn 0.3s ease-in-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Custom Cursor */
+body, a, button, input, textarea, .skills-toggle, .chip {
+    cursor: none !important;
+}
+.custom-cursor, .custom-cursor * {
+    pointer-events: none !important;
+}
+.custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    z-index: 99999;
+}
+.cursor-dot {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #00ff44;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px #00ff44, 0 0 20px #00ff44;
+}
+.cursor-ring {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 1px dashed rgba(0, 255, 255, 0.5);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
+    animation: cursorSpin 4s linear infinite;
+}
+.cursor-crosshair {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    transform: translate(-50%, -50%);
+    opacity: 0.5;
+}
+.cursor-crosshair::before, .cursor-crosshair::after {
+    content: '';
+    position: absolute;
+    background: #9d00ff;
+}
+.cursor-crosshair::before {
+    top: 50%; left: 0; width: 100%; height: 1px;
+}
+.cursor-crosshair::after {
+    left: 50%; top: 0; width: 1px; height: 100%;
+}
+.custom-cursor.clicking .cursor-ring {
+    width: 25px;
+    height: 25px;
+    border-color: #9d00ff;
+    animation-duration: 1s;
+}
+.custom-cursor.clicking .cursor-dot {
+    background: #9d00ff;
+    box-shadow: 0 0 10px #9d00ff, 0 0 20px #9d00ff;
+}
+@keyframes cursorSpin { 
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); } 
+}
+
 
 /* ── SKILLS DASHBOARD ── */
 .skills-dashboard{display:grid;grid-template-columns:300px 1fr;gap:0;

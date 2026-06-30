@@ -394,16 +394,128 @@ const initSkillsTabs = () => {
     });
 };
 
+// Custom Cursor Logic
+const initCustomCursor = () => {
+    const cursor = document.createElement('div');
+    cursor.className = 'custom-cursor';
+    cursor.innerHTML = `
+        <div class="cursor-dot"></div>
+        <div class="cursor-ring"></div>
+        <div class="cursor-crosshair"></div>
+    `;
+    document.body.appendChild(cursor);
+
+    const updateCursor = (x, y) => {
+        cursor.style.transform = `translate(${x}px, ${y}px)`;
+    };
+
+    window.addEventListener('mousemove', (e) => {
+        updateCursor(e.clientX, e.clientY);
+    });
+
+    window.addEventListener('touchmove', (e) => {
+        if(e.touches.length > 0) {
+            updateCursor(e.touches[0].clientX, e.touches[0].clientY);
+        }
+    }, {passive: true});
+
+    const addClick = () => cursor.classList.add('clicking');
+    const removeClick = () => cursor.classList.remove('clicking');
+
+    window.addEventListener('mousedown', addClick);
+    window.addEventListener('mouseup', removeClick);
+    window.addEventListener('touchstart', (e) => {
+        if(e.touches.length > 0) updateCursor(e.touches[0].clientX, e.touches[0].clientY);
+        addClick();
+    }, {passive: true});
+    window.addEventListener('touchend', removeClick);
+};
+
+// Interactive Terminal Logic
+const initInteractiveTerminal = () => {
+    const input = document.getElementById('interactive-terminal-input');
+    const output = document.getElementById('interactive-terminal-output');
+    if (!input || !output) return;
+
+    const commands = {
+        help: "Available commands:\n  whoami      - Print current user\n  ls          - List directory contents\n  cd <dir>    - Navigate to section (e.g. cd skills)\n  clear       - Clear terminal output\n  sudo        - Execute a command as superuser\n  contact     - Display contact info",
+        whoami: "suyog_l",
+        ls: "about  experience  skills  achievements  education",
+        contact: "Email: suyogln26@gmail.com\nWebsite: https://www.matricanetworks.com",
+        sudo: "suyog_l is not in the sudoers file. This incident will be reported."
+    };
+
+    const processCommand = (cmd) => {
+        const parts = cmd.trim().toLowerCase().split(' ');
+        const baseCmd = parts[0];
+
+        if (baseCmd === 'clear') {
+            output.innerHTML = '';
+            return;
+        }
+
+        let response = '';
+        if (baseCmd === 'cd') {
+            if (parts.length > 1) {
+                const target = parts[1];
+                const section = document.getElementById(target);
+                if (section) {
+                    response = `Navigating to /${target}...`;
+                    setTimeout(() => {
+                        window.scrollTo({
+                            top: section.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }, 500);
+                } else {
+                    response = `bash: cd: ${target}: No such file or directory`;
+                }
+            } else {
+                response = 'bash: cd: missing operand';
+            }
+        } else if (commands[baseCmd]) {
+            response = commands[baseCmd];
+        } else if (baseCmd !== '') {
+            response = `bash: ${baseCmd}: command not found`;
+        }
+
+        if (baseCmd !== 'clear' && cmd.trim() !== '') {
+            output.innerHTML += `<div style="color: #00ff44;">root@psychyverse:~# ${cmd}</div>`;
+            if (response) {
+                output.innerHTML += `<div>${response}</div>`;
+            }
+        }
+    };
+
+    const terminalBody = document.querySelector('.terminal-body');
+    if (terminalBody) {
+        terminalBody.addEventListener('click', () => {
+            input.focus();
+        });
+    }
+
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.keyCode === 13) {
+            const cmd = input.value;
+            input.value = '';
+            processCommand(cmd);
+        }
+    });
+};
+
 // Initialize everything when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
+const initAll = () => {
     try { initThreeJS(); } catch(e) { console.warn('Three.js init failed:', e); }
     try { initScrollAnimations(); } catch(e) { console.warn('Scroll animations failed:', e); }
     try { initSmoothScroll(); } catch(e) { console.warn('Smooth scroll failed:', e); }
     try { initNavbarEffects(); } catch(e) { console.warn('Navbar effects failed:', e); }
     try { initSkillsTabs(); } catch(e) { console.warn('Skills tabs failed:', e); }
-});
+    try { initCustomCursor(); } catch(e) { console.warn('Custom cursor failed:', e); }
+    try { initInteractiveTerminal(); } catch(e) { console.warn('Interactive terminal failed:', e); }
+};
 
-// Also run skills tabs immediately if DOM is already ready (fallback)
-if (document.readyState === 'complete' || document.readyState === 'interactive') {
-    setTimeout(() => { try { initSkillsTabs(); } catch(e) {} }, 100);
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAll);
+} else {
+    initAll();
 }
