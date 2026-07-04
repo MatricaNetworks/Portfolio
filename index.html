@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Suyog L - Ethical Hacker, Cybersecurity Engineer, and CEO at Matrica Networks. Building the Psychyverse.">
     <title>Suyog L | Cybersecurity Engineer &amp; CEO</title>
-    <link rel="stylesheet" href="styles.css?v=4">
+    <link rel="stylesheet" href="styles.css?v=5">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -47,7 +47,18 @@
 
         <!-- ==================== HERO ==================== -->
         <section id="hero" class="hero-section">
+            <style>
+                @keyframes cursorBlink {
+                    0%, 100% { opacity: 1; }
+                    50% { opacity: 0; }
+                }
+            </style>
             <div class="hero-layout">
+                <!-- Engineered For Animation -->
+                <div class="engineered-for-container" style="text-align: center; margin-bottom: 2rem; font-family: 'Share Tech Mono', monospace; font-size: 2.2rem; font-weight: 600; color: #fff;">
+                    <span>Engineered For </span>
+                    <span id="animated-roles" style="color: #00ff44; text-shadow: 0 0 10px rgba(0,255,68,0.5);">Hacking</span><span class="blinking-cursor" style="color: #00ff44; text-shadow: 0 0 10px rgba(0,255,68,0.5); animation: cursorBlink 1s step-end infinite;">_</span>
+                </div>
                 <!-- Terminal + CTA -->
                 <div class="hero-terminal terminal-window">
                     <div class="terminal-header">
@@ -542,6 +553,6 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/shaders/CopyShader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
-    <script src="script.js?v=2"></script>
+    <script src="script.js?v=5"></script>
 </body>
 </html>

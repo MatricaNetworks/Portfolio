@@ -527,6 +527,47 @@ const initInteractiveTerminal = () => {
     });
 };
 
+// Typewriter Effect for Hero Section
+const initTypewriterEffect = () => {
+    const roles = ["Hacking", "sysadmin", "developer", "Networking", "security", "database", "devops", "Cloud"];
+    const el = document.getElementById('animated-roles');
+    if (!el) return;
+
+    let roleIndex = 0;
+    let isDeleting = false;
+    let text = roles[roleIndex];
+    el.innerText = text;
+
+    const type = () => {
+        const currentRole = roles[roleIndex];
+        
+        if (isDeleting) {
+            text = currentRole.substring(0, text.length - 1);
+        } else {
+            text = currentRole.substring(0, text.length + 1);
+        }
+        
+        el.innerText = text;
+        let typingSpeed = isDeleting ? 40 : 80;
+
+        if (!isDeleting && text === currentRole) {
+            typingSpeed = 1500; // Pause before starting to delete
+            isDeleting = true;
+        } else if (isDeleting && text === '') {
+            isDeleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+            typingSpeed = 300; // Pause before typing next word
+        }
+
+        setTimeout(type, typingSpeed);
+    };
+
+    setTimeout(() => {
+        isDeleting = true;
+        type();
+    }, 1500);
+};
+
 // Initialize everything when DOM is ready
 const initAll = () => {
     try { initThreeJS(); } catch(e) { console.warn('Three.js init failed:', e); }
@@ -536,6 +577,7 @@ const initAll = () => {
     try { initSkillsTabs(); } catch(e) { console.warn('Skills tabs failed:', e); }
     try { initCustomCursor(); } catch(e) { console.warn('Custom cursor failed:', e); }
     try { initInteractiveTerminal(); } catch(e) { console.warn('Interactive terminal failed:', e); }
+    try { initTypewriterEffect(); } catch(e) { console.warn('Typewriter effect failed:', e); }
 };
 
 if (document.readyState === 'loading') {
