@@ -529,7 +529,7 @@ const initInteractiveTerminal = () => {
 
 // Typewriter Effect for Hero Section
 const initTypewriterEffect = () => {
-    const roles = ["Hacking", "sysadmin", "developer", "Networking", "security", "database", "devops", "Cloud"];
+    const roles = ["Hacking", "Sysadmin", "Development", "Networking", "Security", "Database", "DevSecOps", "Cloud"];
     const el = document.getElementById('animated-roles');
     if (!el) return;
 
