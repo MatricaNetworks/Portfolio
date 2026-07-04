@@ -86,6 +86,9 @@ h1,h2,h3,h4{font-family:var(--hud);letter-spacing:2px;}
 /* ── HERO ── */
 .hero-section{padding-top:160px;}
 .hero-layout{display:block;max-width:900px;margin:0 auto;width:100%;}
+.engineered-for-container { text-align: center; margin-bottom: 2rem; font-family: 'Share Tech Mono', monospace; font-size: 2.2rem; font-weight: 600; color: #fff; }
+#animated-roles { color: #00ff44; text-shadow: 0 0 10px rgba(0,255,68,0.5); }
+.blinking-cursor { color: #00ff44; text-shadow: 0 0 10px rgba(0,255,68,0.5); animation: cursorBlink 1s step-end infinite; }
 .terminal-avatar { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 2px solid var(--cyan); box-shadow: 0 0 20px rgba(0, 255, 255, 0.3); flex-shrink: 0; }
 @keyframes spinRing { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 @keyframes floatAvatar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
@@ -526,4 +529,58 @@ footer p{font-family:var(--mono);font-size:.75rem;color:#445;letter-spacing:1px;
 /* Tall aspect ratio optimizations (Flip Phones in vertical mode) */
 @media (max-width: 480px) and (max-aspect-ratio: 9/20) {
   .hero-section { justify-content: flex-start; padding-top: 140px; }
+}
+
+/* --- SUPER MOBILE & FOLDABLES OPTIMIZATIONS --- */
+/* Tablets & Web (Smooth 60fps) */
+@media (min-width: 768px) {
+  .hero-terminal.terminal-window {
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+}
+
+/* General Mobile Constraints */
+@media (max-width: 768px) {
+  .terminal-body { padding: 1.5rem; }
+  .engineered-for-container { font-size: 1.6rem; margin-bottom: 1.5rem; }
+  .terminal-avatar { width: 100px; height: 100px; }
+  .glitch { font-size: 2.2rem; letter-spacing: 2px; }
+  .bio.console-text { font-size: 0.9rem; line-height: 1.8; }
+}
+
+/* Edge Phones & Standard Mobile */
+@media (max-width: 480px) {
+  .terminal-body { padding: 1.2rem; }
+  .engineered-for-container { font-size: 1.3rem; margin-bottom: 1.2rem; }
+  .terminal-avatar { width: 80px; height: 80px; }
+  .terminal-title { font-size: 0.75rem; }
+  .glitch { font-size: 1.8rem; letter-spacing: 1px; }
+  .subtitle.type-line { font-size: 0.9rem; }
+  .hacker-btn { font-size: 0.85rem; padding: 0.4rem 0.6rem; }
+  /* Safe area handling for edge displays */
+  .hero-layout { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
+}
+
+/* Fold Phones (Outer Screen / Narrow Mobile) */
+@media (max-width: 360px) {
+  .terminal-body { padding: 1rem; }
+  .engineered-for-container { font-size: 1.1rem; margin-bottom: 1rem; }
+  .terminal-avatar { width: 60px; height: 60px; }
+  .glitch { font-size: 1.5rem; }
+  .subtitle.type-line { font-size: 0.8rem; }
+  .bio.console-text { font-size: 0.8rem; }
+  .hacker-btn { font-size: 0.75rem; }
+  .timeline-item { padding-left: 25px; }
+}
+
+/* Double & Triple Fold (Extreme Narrow) */
+@media (max-width: 280px) {
+  .terminal-body { padding: 0.8rem; }
+  .engineered-for-container { font-size: 0.95rem; margin-bottom: 0.8rem; letter-spacing: -0.5px; }
+  .terminal-avatar { display: none; /* Hide on extreme narrow to preserve text flow */ }
+  .glitch { font-size: 1.2rem; }
+  .terminal-title { font-size: 0.65rem; }
+  .hacker-btn { font-size: 0.7rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .section-title { font-size: 1.2rem; }
+  .timeline-item { padding-left: 20px; }
 }
