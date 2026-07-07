@@ -1518,15 +1518,15 @@ textarea,
 }
 
 .chip-grey {
-  background: rgba(149, 165, 166, .08);
-  border: 1px solid rgba(149, 165, 166, .3);
-  color: #bdc3c7;
+  background: rgba(127, 140, 141, .08);
+  border: 1px solid rgba(127, 140, 141, .3);
+  color: #7f8c8d;
 }
 
 .chip-grey:hover {
-  background: rgba(149, 165, 166, .2);
-  border-color: #95a5a6;
-  box-shadow: 0 0 12px rgba(149, 165, 166, .3);
+  background: rgba(127, 140, 141, .2);
+  border-color: #636e72;
+  box-shadow: 0 0 12px rgba(127, 140, 141, .3);
 }
 
 @media(max-width:900px) {
