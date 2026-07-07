@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Suyog L - Ethical Hacker, Cybersecurity Engineer, and CEO at Matrica Networks. Building the Psychyverse.">
     <title>Suyog L | Cybersecurity Engineer &amp; CEO</title>
-    <link rel="stylesheet" href="styles.css?v=7">
+    <link rel="stylesheet" href="styles.css?v=8">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -229,7 +229,7 @@
                 <!-- Left: Category Nav -->
                 <div class="skills-nav">
                     <div class="skills-nav-label">// SELECT MODULE</div>
-                    <button class="skill-tab active" data-tab="cyber">
+                    <button class="skill-tab" data-tab="cyber">
                         <span class="tab-icon"><i class="fas fa-skull-crossbones"></i></span>
                         <span class="tab-text">Cybersecurity &amp; Hacking</span>
                         <span class="tab-count">44</span>
@@ -264,17 +264,36 @@
                         <span class="tab-text">Compliance</span>
                         <span class="tab-count">11</span>
                     </button>
+                    <button class="skill-tab" data-tab="forensics">
+                        <span class="tab-icon"><i class="fas fa-search"></i></span>
+                        <span class="tab-text">Digital Forensics</span>
+                        <span class="tab-count">9</span>
+                    </button>
                     <button class="skill-tab" data-tab="soft">
                         <span class="tab-icon"><i class="fas fa-brain"></i></span>
                         <span class="tab-text">Soft Skills</span>
                         <span class="tab-count">7</span>
+                    </button>
+                    <button class="skill-tab" data-tab="blockchain">
+                        <span class="tab-icon"><i class="fas fa-link"></i></span>
+                        <span class="tab-text">Blockchain &amp; Web3</span>
+                        <span class="tab-count">14</span>
                     </button>
                 </div>
 
                 <!-- Right: Skills Display -->
                 <div class="skills-display">
 
-                    <div class="skill-pane active" id="tab-cyber">
+                    <div class="skill-pane active" id="tab-default">
+                        <div class="pane-header" style="justify-content: center; align-items: center; height: 100%; min-height: 300px; border: none;">
+                            <div style="text-align: center; color: #556; font-family: var(--mono); letter-spacing: 2px;">
+                                <i class="fas fa-terminal" style="font-size: 2rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                                <p>// WAITING FOR MODULE SELECTION</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-pane" id="tab-cyber">
                         <div class="pane-header">
                             <i class="fas fa-skull-crossbones pane-icon" style="color:#ff4455"></i>
                             <div>
@@ -445,6 +464,26 @@
                         </div>
                     </div>
 
+                    <div class="skill-pane" id="tab-forensics">
+                        <div class="pane-header">
+                            <i class="fas fa-search pane-icon" style="color:#ff8800"></i>
+                            <div>
+                                <h3 class="pane-title">Digital Forensics &amp; Tools</h3>
+                                <p class="pane-desc">Investigation, evidence extraction, and analysis frameworks</p>
+                            </div>
+                        </div>
+                        <div class="skill-chips">
+                            <span class="chip chip-orange">Autopsy</span><span class="chip chip-orange">EnCase</span>
+                            <span class="chip chip-orange">Volatility</span><span class="chip chip-orange">FTK Imager</span>
+                            <span class="chip chip-orange">Wireshark</span><span class="chip chip-orange">The Sleuth Kit (TSK)</span>
+                            <span class="chip chip-orange">Cellebrite</span><span class="chip chip-orange">Magnet AXIOM</span>
+                            <span class="chip chip-orange">Ghidra</span><span class="chip chip-orange">X-Ways Forensics</span>
+                            <span class="chip chip-orange">CAINE</span><span class="chip chip-orange">SIFT Workstation</span>
+                            <span class="chip chip-orange">KAPE</span><span class="chip chip-orange">Plaso</span>
+                            <span class="chip chip-orange">Belkasoft</span>
+                        </div>
+                    </div>
+
                     <div class="skill-pane" id="tab-soft">
                         <div class="pane-header">
                             <i class="fas fa-brain pane-icon" style="color:#9d00ff"></i>
@@ -460,6 +499,25 @@
                             <span class="chip chip-purple">Strategic Planning</span>
                             <span class="chip chip-purple">Team Building</span>
                             <span class="chip chip-purple">Product Vision</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-pane" id="tab-blockchain">
+                        <div class="pane-header">
+                            <i class="fas fa-link pane-icon" style="color:#bdc3c7"></i>
+                            <div>
+                                <h3 class="pane-title">Blockchain &amp; Web3</h3>
+                                <p class="pane-desc">Smart contracts, decentralized apps, and ledger technologies</p>
+                            </div>
+                        </div>
+                        <div class="skill-chips">
+                            <span class="chip chip-grey">Solidity</span><span class="chip chip-grey">Web3.js</span>
+                            <span class="chip chip-grey">Ethers.js</span><span class="chip chip-grey">Hardhat</span>
+                            <span class="chip chip-grey">Truffle</span><span class="chip chip-grey">Ganache</span>
+                            <span class="chip chip-grey">MetaMask</span><span class="chip chip-grey">Remix IDE</span>
+                            <span class="chip chip-grey">Hyperledger Fabric</span><span class="chip chip-grey">Geth</span>
+                            <span class="chip chip-grey">Smart Contracts</span><span class="chip chip-grey">IPFS</span>
+                            <span class="chip chip-grey">Chainlink</span><span class="chip chip-grey">Rust (Solana)</span>
                         </div>
                     </div>
 
@@ -553,6 +611,6 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/shaders/CopyShader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
-    <script src="script.js?v=6"></script>
+    <script src="script.js?v=9"></script>
 </body>
 </html>

@@ -1211,6 +1211,14 @@ textarea,
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+}
+.skills-nav::-webkit-scrollbar {
+  width: 4px;
+}
+.skills-nav::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 255, 0.2);
+  border-radius: 4px;
 }
 
 .skills-nav-label {
@@ -1497,6 +1505,30 @@ textarea,
   box-shadow: 0 0 12px rgba(157, 0, 255, .3);
 }
 
+.chip-orange {
+  background: rgba(255, 136, 0, .08);
+  border: 1px solid rgba(255, 136, 0, .3);
+  color: #ffaa33;
+}
+
+.chip-orange:hover {
+  background: rgba(255, 136, 0, .2);
+  border-color: #ff8800;
+  box-shadow: 0 0 12px rgba(255, 136, 0, .3);
+}
+
+.chip-grey {
+  background: rgba(149, 165, 166, .08);
+  border: 1px solid rgba(149, 165, 166, .3);
+  color: #bdc3c7;
+}
+
+.chip-grey:hover {
+  background: rgba(149, 165, 166, .2);
+  border-color: #95a5a6;
+  box-shadow: 0 0 12px rgba(149, 165, 166, .3);
+}
+
 @media(max-width:900px) {
   .skills-dashboard {
     grid-template-columns: 1fr;
@@ -1506,14 +1538,23 @@ textarea,
     border-right: none;
     border-bottom: 1px solid var(--border);
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* Firefox */
+  }
+  .skills-nav::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
   }
 
   .skill-tab {
     border-bottom: none;
     border-left: none;
     border-bottom: 3px solid transparent;
+    scroll-snap-align: start;
+    white-space: nowrap;
   }
 
   .skill-tab.active {
