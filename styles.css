@@ -1505,16 +1505,16 @@ textarea,
   box-shadow: 0 0 12px rgba(157, 0, 255, .3);
 }
 
-.chip-orange {
-  background: rgba(255, 136, 0, .08);
-  border: 1px solid rgba(255, 136, 0, .3);
-  color: #ffaa33;
+.chip-silver {
+  background: rgba(224, 224, 224, .08);
+  border: 1px solid rgba(224, 224, 224, .3);
+  color: #e0e0e0;
 }
 
-.chip-orange:hover {
-  background: rgba(255, 136, 0, .2);
-  border-color: #ff8800;
-  box-shadow: 0 0 12px rgba(255, 136, 0, .3);
+.chip-silver:hover {
+  background: rgba(224, 224, 224, .2);
+  border-color: #dcdcdc;
+  box-shadow: 0 0 12px rgba(224, 224, 224, .3);
 }
 
 .chip-grey {
