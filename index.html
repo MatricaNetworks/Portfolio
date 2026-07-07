@@ -11,12 +11,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Favicon & Web Manifest -->
+    <!-- Favicon & Web Manifest (All Browsers, OS & Edge Cases) -->
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
     <link rel="icon" href="./favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
-    <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+    
+    <!-- Apple / iOS -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Suyog L">
+    
+    <!-- Android / Chrome / DuckDuckGo / PWA -->
     <link rel="manifest" href="./site.webmanifest">
+    <meta name="theme-color" content="#08080c">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Suyog L">
+    
+    <!-- Microsoft Windows / Edge / IE -->
+    <meta name="msapplication-TileColor" content="#08080c">
+    <meta name="msapplication-TileImage" content="./android-chrome-192x192.png">
+    <meta name="msapplication-config" content="none">
 </head>
 <body>
     <div id="canvas-container"></div>
