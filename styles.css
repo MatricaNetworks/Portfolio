@@ -1555,6 +1555,7 @@ textarea,
     border-bottom: 3px solid transparent;
     scroll-snap-align: start;
     white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .skill-tab.active {
@@ -2162,6 +2163,16 @@ footer p {
   .timeline-item {
     padding-left: 25px;
   }
+
+  .chip {
+    padding: .4rem .7rem;
+    font-size: .75rem;
+  }
+
+  .skills-nav-label {
+    font-size: .5rem;
+    padding: .7rem .9rem;
+  }
 }
 
 /* Double & Triple Fold (Extreme Narrow) */
@@ -2198,6 +2209,23 @@ footer p {
 
   .section-title {
     font-size: 1.2rem;
+  }
+
+  .skills-display {
+    padding: 0.6rem;
+  }
+
+  .chip {
+    padding: .3rem .5rem;
+    font-size: .65rem;
+  }
+
+  .skill-tab {
+    padding: .5rem;
+  }
+  
+  .tab-text {
+    font-size: .6rem;
   }
 
   .timeline-item {
