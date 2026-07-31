@@ -1875,6 +1875,7 @@ footer::before {
   font-family: var(--hud);
   background: linear-gradient(135deg, #00ffff 0%, #a855f7 50%, #00ff44 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
   letter-spacing: 1.2px;
