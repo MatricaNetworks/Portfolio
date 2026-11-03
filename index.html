@@ -7,7 +7,7 @@
     <meta name="description"
         content="Suyog L - Ethical Hacker, Cybersecurity Engineer, and CEO at Matrica Networks. Building the Psychyverse.">
     <title>Suyog L | Cybersecurity Engineer &amp; CEO</title>
-    <link rel="stylesheet" href="styles.css?v=12">
+    <link rel="stylesheet" href="styles.css?v=14">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -61,6 +61,11 @@
                 <span class="logo-bracket">[</span>SUYOG<span class="highlight">.L</span><span
                     class="logo-bracket">]</span>
             </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
             <ul class="nav-links">
                 <li><a href="#hero"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="#about"><i class="fas fa-robot"></i> About</a></li>
@@ -99,6 +104,49 @@
                     <span>Engineered For </span>
                     <span id="animated-roles">Hacking</span><span class="blinking-cursor">_</span>
                 </div>
+
+                <!-- ANIME.JS COMPUTER WORLD KINETIC MATRIX -->
+                <div class="anime-cyber-container glass-panel">
+                    <div class="cyber-matrix-header">
+                        <div class="matrix-status-line">
+                            <span class="matrix-led"></span>
+                            <span class="matrix-title">PSYCHYVERSE // ANIME.JS CYBER MATRIX</span>
+                            <span class="matrix-coord" id="matrix-coord">GRID: [INITIALIZING...]</span>
+                        </div>
+                        <div class="matrix-hud-controls">
+                            <button class="matrix-ctrl-btn active" data-mode="ripple" title="Kinetic Ripple"><i class="fas fa-wave-square"></i> RIPPLE</button>
+                            <button class="matrix-ctrl-btn" data-mode="vortex" title="Cyber Vortex"><i class="fas fa-atom"></i> VORTEX</button>
+                            <button class="matrix-ctrl-btn" data-mode="pulse" title="Neural Pulse"><i class="fas fa-bolt"></i> PULSE</button>
+                            <button class="matrix-ctrl-btn" data-mode="decrypt" title="Matrix Cypher"><i class="fas fa-terminal"></i> CYPH</button>
+                        </div>
+                    </div>
+
+                    <div class="cyber-matrix-viewport" id="cyber-matrix-viewport">
+                        <!-- Holographic Center Reactor Core (Anime.js Animated) -->
+                        <div class="cyber-core-visualizer" id="cyber-core-visualizer" title="Click / Tap to Trigger Neural Overload Surge">
+                            <div class="core-ring core-ring-outer"></div>
+                            <div class="core-ring core-ring-mid"></div>
+                            <div class="core-ring core-ring-inner"></div>
+                            <div class="core-hex">
+                                <div class="core-glyph" id="core-glyph">0xΨ</div>
+                            </div>
+                        </div>
+
+                        <!-- Anime.js Staggered Interactive Grid Nodes -->
+                        <div class="cyber-matrix-nodes" id="cyber-matrix-nodes"></div>
+                    </div>
+                    
+                    <div class="cyber-matrix-footer">
+                        <div class="matrix-hint">
+                            <i class="fas fa-fingerprint"></i> <span class="hint-text">TAP OR HOVER TO TRIGGER KINETIC SHOCKWAVES</span>
+                        </div>
+                        <div class="matrix-telemetry">
+                            <span>MODE: <strong id="matrix-active-mode">RIPPLE</strong></span>
+                            <span>BURST: <strong id="matrix-burst">ACTIVE</strong></span>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Terminal + CTA -->
                 <div class="hero-terminal terminal-window">
                     <div class="terminal-header">
@@ -111,7 +159,7 @@
                             style="display: flex; align-items: center; gap: 25px; margin-bottom: 20px; flex-wrap: wrap;">
                             <img src="suyogl.jpeg?v=1" alt="Suyog L" class="terminal-avatar" />
                             <div>
-                                <h1 class="glitch" data-text="Suyog L" style="margin-bottom: 0;">Suyog L</h1>
+                                <h1 class="glitch" data-text="Suyog L" id="hero-glitch-name" style="margin-bottom: 0; cursor: pointer;" title="Click to Decrypt Cypher">Suyog L</h1>
                                 <h2 class="subtitle type-line" style="margin-top: 10px;">
                                     <span class="prompt">&gt;</span> Ethical Hacker <span class="sep">|</span>
                                     Cybersecurity Engineer <span class="sep">|</span> Entrepreneur
@@ -140,7 +188,7 @@
                             style="margin-top: 10px; display: flex; align-items: center; gap: 10px; font-family: var(--mono); color: #00ff44; position: relative;">
                             <span class="prompt">root@psychyverse:~#</span>
                             <input type="text" id="interactive-terminal-input" autocomplete="off" spellcheck="false"
-                                style="background: transparent; border: none; color: #00ffff; font-family: var(--mono); font-size: 0.9rem; width: 100%; outline: none;"
+                                class="interactive-input"
                                 placeholder="Type 'help' and press Enter...">
                         </div>
                     </div>
@@ -744,7 +792,9 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/shaders/CopyShader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
-    <script src="script.js?v=9"></script>
+    <!-- Anime.js for Advanced Cyber World Kinetic Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="script.js?v=11"></script>
 </body>
 
 </html>
